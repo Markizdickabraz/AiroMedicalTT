@@ -1,11 +1,13 @@
-
+import { Route, Routes } from 'react-router-dom';
 import Start from './pages/Start';
+import Beer from './pages/Beer';
 
 function App() {
   return (
-    <>
-     <Start />
-    </>
+    <Routes>
+          <Route path="/" element={<Start />} />
+          <Route path="/beer" element={<Beer />} />
+    </Routes>
   );
 }
 

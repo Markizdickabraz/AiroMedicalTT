@@ -5,11 +5,15 @@ import { RecipeListGallery } from './RecipeListStyled';
 import Loader from '../loader/loader';
 
 const RecipeList = () => {
-    const { recipes, isLoading, loadRecipes } = useRecipeStore();
+  const { recipes, isLoading, loadRecipes } = useRecipeStore();
+
     useEffect(() => {
-      loadRecipes();
+      if (recipes.length === 0) {
+        loadRecipes();
+     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [recipes.length === 0]);
+  
   if (isLoading) {
     return <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
       <Loader />

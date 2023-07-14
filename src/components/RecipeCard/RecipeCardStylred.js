@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const RecipeCardStyled = styled.li`
 position: relative;
@@ -31,4 +32,9 @@ border: 1px solid black;
     width: 52px;
     height: 27px;
 }
+`;
+
+export const LinkStyled = styled(Link)`
+text-decoration: none;
+color: black;
 `;
