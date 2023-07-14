@@ -3,6 +3,7 @@ import { RecipeCardStyled } from "./RecipeCardStylred";
 export default function RecipeCard({ recipe }) { 
     
     function handleClick(event) {
+        console.log(event.target)
         if (event.button === 2) {
         event.preventDefault();
     // Код, який буде виконуватися при натисканні правою кнопкою миші
