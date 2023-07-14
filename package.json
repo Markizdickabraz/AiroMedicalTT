@@ -1,8 +1,8 @@
 {
   "name": "airomedicaltt",
   "version": "0.1.0",
-  "private": true,
   "homepage": "https://Markizdickabraz.github.io/AiroMedicalTT/",
+  "private": true,
   "dependencies": {
     "@csstools/normalize.css": "^12.0.0",
     "@testing-library/jest-dom": "^5.16.5",

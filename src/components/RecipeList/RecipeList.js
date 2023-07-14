@@ -21,11 +21,14 @@ const RecipeList = () => {
   }
 
   return (
-      <RecipeListGallery>
+    <>
+    {recipes.length !== 0 &&
+        <RecipeListGallery>
           {recipes.slice(0, 15).map((recipe) => (
         <RecipeCard key={recipe.id} recipe={recipe} />
       ))}
-    </RecipeListGallery>
+        </RecipeListGallery>}
+    </>
   );
 };
 
