@@ -13,6 +13,7 @@ const useRecipeStore = create(persist((set) => ({
             console.log(data)
             set(produce((state) => {
                 state.recipes = data;
+                console.log(state.recipes)
                 state.isLoading = false;
             }));
         } catch (error) {

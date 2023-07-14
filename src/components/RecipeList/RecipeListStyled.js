@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const RecipeListGallery = styled.div`
+export const RecipeListGallery = styled.ul`
 justify-content:center;
 display: flex;
 gap:15px;

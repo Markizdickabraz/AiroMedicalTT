@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
-export const RecipeCardStyled = styled.div`
-width: 200px;
-`
+export const RecipeCardStyled = styled.li`
+width: 400px;
+height: 150px;
+display: flex;
+list-style:none;
+`;
