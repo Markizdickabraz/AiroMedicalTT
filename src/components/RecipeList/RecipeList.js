@@ -6,7 +6,6 @@ import Loader from '../loader/loader';
 
 const RecipeList = () => {
     const { recipes, isLoading, loadRecipes } = useRecipeStore();
-    // console.log(recipes)
     useEffect(() => {
       loadRecipes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
