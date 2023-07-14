@@ -5,8 +5,8 @@ export const RecipeCardStyled = styled.li`
 position: relative;
 width: 400px;
 height: 150px;
-display: flex;
 list-style:none;
+overflow: hidden;
 
 &.active {
 border: 1px black solid;
@@ -37,4 +37,6 @@ border: 1px solid black;
 export const LinkStyled = styled(Link)`
 text-decoration: none;
 color: black;
+display: flex;
+
 `;
