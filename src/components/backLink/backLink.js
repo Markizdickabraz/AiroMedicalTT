@@ -8,7 +8,7 @@ const StyledLink = styled(Link)`
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 8px 0;
+  padding: 15px;
   color: black;
   text-decoration: none;
   font-weight: 500;
@@ -21,8 +21,8 @@ const StyledLink = styled(Link)`
 
 const BackLink = () => {
   return (
-    <StyledLink to={`/`}>
-      <HiArrowLeft size="16" />
+    <StyledLink to={`/`}> 
+      <HiArrowLeft size="26" />
     </StyledLink>
   );
 };

@@ -5,10 +5,10 @@ import { persist } from 'zustand/middleware';
 const useRecipeStore = create(persist((set) => ({
     recipes: [persist.state],
     isLoading: false,
-    loadRecipes: async () => {
+    loadRecipes: async (page) => {
         set({ isLoading: true });
         try {
-            const response = await fetch('https://api.punkapi.com/v2/beers?page=1');
+            const response = await fetch(`https://api.punkapi.com/v2/beers?page=${page}`);
             const data = await response.json();
             set(produce((state) => {
                 state.recipes = data;
