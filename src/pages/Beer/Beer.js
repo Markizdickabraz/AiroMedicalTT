@@ -19,11 +19,11 @@ export default function Beer() {
                         <p>First Brewed: {recipeItem[0].first_brewed}</p>
                         <h4>Food pairing: </h4>
                         {recipeItem[0].food_pairing.map((item) => 
-                            <p>{item}</p>
+                            <p key={item}>{item}</p>
                         )}
                     </div>
             </div>
-                <h4 style={{textAlign:'center'}}>Ingredients</h4>
+                <h4 style={{textAlign:'center', paddingBottom:15}}>Ingredients</h4>
                 <div style={{display:'flex', justifyContent:'center', gap: 100}}>
                     <div>
                         <h5>Hops</h5>
@@ -37,14 +37,13 @@ export default function Beer() {
                     ))}
                     </div>
                 </div>
-                    <h4 style={{textAlign:'center'}}>Method</h4>
+                    <h4 style={{textAlign:'center', paddingBottom:15}}>Method</h4>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: 100 }} >
                         <p>Fermentation: temp {recipeItem[0].method.fermentation.temp.value} {recipeItem[0].method.fermentation.temp.unit}</p>
                     <p>Mash Temp: Duration {recipeItem[0].method.mash_temp[0].duration}, Temp {recipeItem[0].method.mash_temp[0].temp.value} {recipeItem[0].method.mash_temp[0].temp.unit}</p>
                 </div>
                 <h3 style={{textAlign:'center'}}>Bon appetit!</h3>
             </div>
-            
     </>
     )
 }

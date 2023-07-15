@@ -19,11 +19,12 @@ const useRecipeStore = create(persist((set) => ({
             set({ isLoading: false });
         }
     },
-    deleteRecipe: (recipeId) => {
-        set(produce((state) => {
-            state.recipes = state.recipes.filter((recipe) => recipe.id !== recipeId);
+        deleteRecipe: (recipeIds) => {
+    set(produce((state) => {
+        state.recipes = state.recipes.filter((recipe) => !recipeIds.includes(recipe.id));
+        console.log(state.recipes.length);
     }));
-  },
+    },
 }), {
     name: 'recipe-store',
 }));

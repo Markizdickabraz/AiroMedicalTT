@@ -17,7 +17,7 @@ background-color: lightblue;
 `;
 
 export const DeleteRecipeBtn = styled.button`
-width: 50px;
+width: 60px;
 height: 25px;
 cursor: pointer;
 position: absolute;
@@ -29,7 +29,7 @@ border: 1px solid black;
 
 &:hover{
     background-color: lightskyblue;
-    width: 52px;
+    width: 62px;
     height: 27px;
 }
 `;
