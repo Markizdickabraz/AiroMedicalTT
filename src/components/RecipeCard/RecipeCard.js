@@ -26,7 +26,7 @@ export default function RecipeCard({ recipe, activeRecipe }) {
   const isActiveClass = isActive ? "active" : "";
 
   return (
-    <RecipeCardStyled
+      <RecipeCardStyled
       className={isActiveClass}
       onContextMenu={handleClick}
       id={recipe.id}
@@ -39,13 +39,13 @@ export default function RecipeCard({ recipe, activeRecipe }) {
           width={50}
           height={120}
         />
-        <div style={{ paddingLeft: 15 }}>
+            <div style={{ paddingLeft: 15, paddingTop:8 }}>
           <h4>{recipe.name}</h4>
           <p
             title={recipe.description}
-            style={{ overflow: "hidden", display: "block", height: 55 }}
+            style={{ overflow: "hidden", display: "block", height: 200 }}
           >
-            Title: {recipe.description}{" "}
+            Click to read the recipe.
           </p>
         </div>
       </LinkStyled>

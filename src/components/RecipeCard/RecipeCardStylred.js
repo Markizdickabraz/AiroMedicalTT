@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const RecipeCardStyled = styled.li`
-width: 400px;
-height: 150px;
+width: 260px;
+height: 200px;
 list-style:none;
-overflow: hidden;
+border: 1px solid black;
+border-radius:4px;
+padding-left: 15px;
 
 &.active {
-border: 1px black solid;
-scale: 1.02;
 border-radius:4px;
 background-color: lightblue;
 }

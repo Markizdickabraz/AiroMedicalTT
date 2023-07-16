@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const RecipeListGallery = styled.ul`
+overflow: auto;
 justify-content:center;
 display: flex;
 gap:15px;

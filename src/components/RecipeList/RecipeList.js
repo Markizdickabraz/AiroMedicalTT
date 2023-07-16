@@ -1,15 +1,18 @@
 import useRecipeStore from '../../zustand/RecipesStore';
-import { useEffect, useState } from 'react';
-import RecipeCard from '../RecipeCard/RecipeCard';
 import { BtnContainer, DeleteRecipeBtn, RecipeListGallery } from './RecipeListStyled';
+import { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import RecipeCard from '../RecipeCard/RecipeCard';
 import Loader from '../loader/loader';
+
+import 'swiper/css';
+
 
 const RecipeList = () => {
   const { recipes, isLoading, loadRecipes, deleteRecipe } = useRecipeStore();
   const [page, setPage] = useState(1);
   const [activeElement, setActiveEelement] = useState([]);
-  const [recipesElements, setRecipesElement] = useState(null)
-
+  const [recipesElements, setRecipesElement] = useState(null);
   useEffect(() => {
   loadRecipes(page)
   setRecipesElement(recipes)
@@ -27,13 +30,12 @@ const RecipeList = () => {
   
   const activeRecipe = (event) => {
     setActiveEelement(event);
-  }
+  };
   
   const deleteBtn = (recipeIds) => {
     recipeIds = Array.from(activeElement).map(recipe => parseInt(recipe.id));
     deleteRecipe(recipeIds);
-  }
-
+  };
 
   if (isLoading) {
     return <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
@@ -42,12 +44,21 @@ const RecipeList = () => {
   }
   return (
     <>
-      {activeElement.length !== 0 && <BtnContainer><DeleteRecipeBtn onClick={deleteBtn} type="button">delete</DeleteRecipeBtn></BtnContainer>}
-        {recipesElements !== null && <RecipeListGallery>
-          {recipes.slice(0, 15).map((recipe) => (
-        <RecipeCard activeRecipe={activeRecipe} key={recipe.id} recipe={recipe} />
-      ))}
+      {recipesElements !== null &&
+        <RecipeListGallery>
+          <Swiper
+            slidesPerView={5}
+            spaceBetween={20} // Додайте відстань між слайдами
+            freeMode={true} // Дозволяємо перетягування слайдів
+          >
+            {recipes.slice(0, 15).map((recipe) => (
+            <SwiperSlide key={recipe.id} >
+                  <RecipeCard activeRecipe={activeRecipe}  recipe={recipe} />   
+                  </SwiperSlide>
+                  ))}
+          </Swiper>
         </RecipeListGallery>}
+            {activeElement.length !== 0 && <BtnContainer><DeleteRecipeBtn onClick={deleteBtn} type="button">delete</DeleteRecipeBtn></BtnContainer>}
         </>
   );
 };
