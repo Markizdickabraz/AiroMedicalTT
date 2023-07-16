@@ -11,6 +11,7 @@ const RecipeList = () => {
   const [recipesElements, setRecipesElement] = useState(null)
 
   useEffect(() => {
+  loadRecipes(page)
   setRecipesElement(recipes)
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
