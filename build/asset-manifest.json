@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.d4ab49d4.css",
-    "main.js": "/static/js/main.1e32ab5f.js",
-    "index.html": "/index.html",
-    "main.d4ab49d4.css.map": "/static/css/main.d4ab49d4.css.map",
-    "main.1e32ab5f.js.map": "/static/js/main.1e32ab5f.js.map"
+    "main.css": "/AiroMedicalTT/static/css/main.aeccc696.css",
+    "main.js": "/AiroMedicalTT/static/js/main.fc59bf1c.js",
+    "static/media/beer.jpg": "/AiroMedicalTT/static/media/beer.213b6e863d1fce2d9267.jpg",
+    "index.html": "/AiroMedicalTT/index.html",
+    "main.aeccc696.css.map": "/AiroMedicalTT/static/css/main.aeccc696.css.map",
+    "main.fc59bf1c.js.map": "/AiroMedicalTT/static/js/main.fc59bf1c.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4ab49d4.css",
-    "static/js/main.1e32ab5f.js"
+    "static/css/main.aeccc696.css",
+    "static/js/main.fc59bf1c.js"
   ]
 }
