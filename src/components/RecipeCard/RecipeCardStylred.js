@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const RecipeCardStyled = styled.li`
-width: 230px;
-height: 220px;
+export const RecipeCardStyled = styled.div`
+/* width: 70%; */
+height: 100%;
 list-style:none;
 border: 1px solid black;
 border-radius:4px;

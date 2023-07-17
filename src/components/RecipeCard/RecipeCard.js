@@ -37,12 +37,10 @@ export default function RecipeCard({ recipe, activeRecipe }) {
           style={{ padding: 5 }}
           src={recipe.image_url}
           alt={recipe.name}
-          width={50}
-          height={120}
+          width={'15%'}
         />
           <p
             title={recipe.description}
-            style={{ overflow: "hidden", display: "block", height: 200 }}
           >
             Click to read the recipe.
           </p>

@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import Loader from '../loader/loader';
-
 import 'swiper/css';
+import beer from '../../img/beer.jpg';
+
 
 const RecipeList = () => {
   const { recipes, isLoading, loadRecipes, deleteRecipe } = useRecipeStore();
@@ -48,22 +49,23 @@ const RecipeList = () => {
         <RecipeListGallery>
           <Swiper
             slidesPerView={5}
-            spaceBetween={20}
+            spaceBetween={10}
             freeMode={true} 
           >
-             {recipes
-    .slice(0, 15)
-    .map((recipe) => (
-      recipe.id ? (
-        <SwiperSlide key={recipe.id}>
-          <RecipeCard activeRecipe={activeRecipe} recipe={recipe} />
-        </SwiperSlide>
-      ) : null
-    ))}
+      {recipes && recipes.slice(0, 15).map((recipe) => (
+      recipe && recipe.id ? (
+      <SwiperSlide key={recipe.id}>
+        <RecipeCard activeRecipe={activeRecipe} recipe={recipe} />
+      </SwiperSlide>
+    ) : null
+  ))}
           </Swiper>
         </RecipeListGallery>}
-            {activeElement.length !== 0 && <BtnContainer><DeleteRecipeBtn onClick={deleteBtn} type="button">delete</DeleteRecipeBtn></BtnContainer>}
-        </>
+      <div style={{position:'relative', paddingTop:25}}>
+         {activeElement.length !== 0 && <BtnContainer><DeleteRecipeBtn onClick={deleteBtn} type="button">delete</DeleteRecipeBtn></BtnContainer>}
+       <div style={{display:'flex', justifyContent:'center'}}><img src={beer} alt='beerImage' style={{width:'80%',height: 450, objectFit:"contain"}} /></div>
+        </div>
+    </>
   );
 };
 
