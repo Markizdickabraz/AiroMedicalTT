@@ -32,6 +32,7 @@ export default function RecipeCard({ recipe, activeRecipe }) {
       id={recipe.id}
     >
       <LinkStyled to={`/beer`} state={{ recipeItem }}>
+          <h4>{recipe.name}</h4>
         <img
           style={{ padding: 5 }}
           src={recipe.image_url}
@@ -39,15 +40,12 @@ export default function RecipeCard({ recipe, activeRecipe }) {
           width={50}
           height={120}
         />
-            <div style={{ paddingLeft: 15, paddingTop:8 }}>
-          <h4>{recipe.name}</h4>
           <p
             title={recipe.description}
             style={{ overflow: "hidden", display: "block", height: 200 }}
           >
             Click to read the recipe.
           </p>
-        </div>
       </LinkStyled>
     </RecipeCardStyled>
   );

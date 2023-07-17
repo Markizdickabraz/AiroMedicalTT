@@ -7,12 +7,12 @@ import Loader from '../loader/loader';
 
 import 'swiper/css';
 
-
 const RecipeList = () => {
   const { recipes, isLoading, loadRecipes, deleteRecipe } = useRecipeStore();
   const [page, setPage] = useState(1);
   const [activeElement, setActiveEelement] = useState([]);
   const [recipesElements, setRecipesElement] = useState(null);
+
   useEffect(() => {
   loadRecipes(page)
   setRecipesElement(recipes)
@@ -48,14 +48,18 @@ const RecipeList = () => {
         <RecipeListGallery>
           <Swiper
             slidesPerView={5}
-            spaceBetween={20} // Додайте відстань між слайдами
-            freeMode={true} // Дозволяємо перетягування слайдів
+            spaceBetween={20}
+            freeMode={true} 
           >
-            {recipes.slice(0, 15).map((recipe) => (
-            <SwiperSlide key={recipe.id} >
-                  <RecipeCard activeRecipe={activeRecipe}  recipe={recipe} />   
-                  </SwiperSlide>
-                  ))}
+             {recipes
+    .slice(0, 15)
+    .map((recipe) => (
+      recipe.id ? (
+        <SwiperSlide key={recipe.id}>
+          <RecipeCard activeRecipe={activeRecipe} recipe={recipe} />
+        </SwiperSlide>
+      ) : null
+    ))}
           </Swiper>
         </RecipeListGallery>}
             {activeElement.length !== 0 && <BtnContainer><DeleteRecipeBtn onClick={deleteBtn} type="button">delete</DeleteRecipeBtn></BtnContainer>}
