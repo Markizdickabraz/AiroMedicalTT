@@ -51,6 +51,16 @@ const RecipeList = () => {
             slidesPerView={5}
             spaceBetween={10}
             freeMode={true} 
+            breakpoints={{
+            320: {
+              slidesPerView: 2,
+              slidesPerGroup: 1,
+            },
+            1024: {
+              slidesPerView: 5,
+              slidesPerGroup: 1,
+            },
+          }}
           >
       {recipes && recipes.slice(0, 15).map((recipe) => (
       recipe && recipe.id ? (

@@ -16,6 +16,7 @@ background-color: lightblue;
 `;
 
 export const LinkStyled = styled(Link)`
+height: 100%;
 padding-top:10px;
 text-decoration: none;
 color: black;

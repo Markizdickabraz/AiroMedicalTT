@@ -7,11 +7,10 @@ justify-content:space-around;
 
 export const BtnContainer = styled.div`
 position: absolute;
-bottom: 0.1;
-left: 50%;
+/* top: px; */
+left: 47%;
 padding-top:25px;
 padding-bottom: 25px;
-/* margin: 0 auto; */
 display: flex;
 justify-content: center;
 `
