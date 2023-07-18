@@ -3,12 +3,10 @@ import styled from "styled-components";
 export const RecipeListGallery = styled.div`
 display: flex;
 justify-content:space-around;
+padding-top:20px;
 `;
 
 export const BtnContainer = styled.div`
-position: absolute;
-/* top: px; */
-left: 47%;
 padding-top:25px;
 padding-bottom: 25px;
 display: flex;

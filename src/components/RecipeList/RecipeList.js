@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import Loader from '../loader/loader';
 import 'swiper/css';
-import beer from '../../img/beer.jpg';
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from 'react-icons/fa';
 
 const RecipeList = () => {
@@ -14,19 +13,24 @@ const RecipeList = () => {
   const [activeElement, setActiveEelement] = useState([]);
   const [recipesElements, setRecipesElement] = useState(null);
   const swiperRef = useRef(null);
-
   const [prevBtnDisable, setPrevBtnDisable] = useState(true);
   const [nextBtnDisable, setNextBtnDisable] = useState(false);
+  const [startItem, setStartItem] = useState(0);
+  const [endItem, setEndItem] = useState(15);
 
   const prevSlide = () => {
     if (!swiperRef.current?.swiper.isBeginning) {
       swiperRef.current?.swiper.slidePrev();
+      setStartItem(prevState => prevState - 5);
+      setEndItem(prevState => prevState - 5);
     }
   };
 
   const nextSlide = () => {
     if (!swiperRef.current?.swiper.isEnd) {
       swiperRef.current?.swiper.slideNext();
+      setStartItem(prevState => prevState + 5);
+      setEndItem(prevState => prevState + 5);
     }
   };
 
@@ -64,7 +68,7 @@ const RecipeList = () => {
     recipeIds = Array.from(activeElement).map(recipe => parseInt(recipe.id));
     deleteRecipe(recipeIds);
   };
-
+  
   if (isLoading) {
     return <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
       <Loader />
@@ -90,7 +94,7 @@ const RecipeList = () => {
             },
           }}
           >
-      {recipes && recipes.slice(0, 15).map((recipe) => (
+      {recipes && recipes.slice(startItem, endItem).map((recipe) => (
       recipe && recipe.id ? (
       <SwiperSlide key={recipe.id}>
         <RecipeCard activeRecipe={activeRecipe} recipe={recipe} />
@@ -99,12 +103,6 @@ const RecipeList = () => {
   ))}
           </Swiper>
         </RecipeListGallery>}
-      
-      <div>
-      
-        
-      </div>
-
   <ArrowBtnContainer className="swiper-nav-btns">
             <ArrowBtn onClick={prevSlide} disabled={prevBtnDisable}>
                <FaLongArrowAltLeft />
@@ -113,10 +111,7 @@ const RecipeList = () => {
               <FaLongArrowAltRight />
             </ArrowBtn>
           </ArrowBtnContainer>
-      <div style={{position:'relative', paddingTop:25}}>
          {activeElement.length !== 0 && <BtnContainer><DeleteRecipeBtn onClick={deleteBtn} type="button">delete</DeleteRecipeBtn></BtnContainer>}
-       <div style={{display:'flex', justifyContent:'center'}}><img src={beer} alt='beerImage' style={{width:'80%',height: 450, objectFit:"contain"}} /></div>
-        </div>
     </>
   );
 };
