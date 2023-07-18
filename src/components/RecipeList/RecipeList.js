@@ -18,7 +18,6 @@ const RecipeList = () => {
   const [prevBtnDisable, setPrevBtnDisable] = useState(true);
   const [nextBtnDisable, setNextBtnDisable] = useState(false);
 
-
   const prevSlide = () => {
     if (!swiperRef.current?.swiper.isBeginning) {
       swiperRef.current?.swiper.slidePrev();
@@ -32,12 +31,14 @@ const RecipeList = () => {
   };
 
   swiperRef.current?.swiper.on("slideChange", () => {
-    swiperRef.current?.swiper.isBeginning
-      ? setPrevBtnDisable(true)
-      : setPrevBtnDisable(false);
-    swiperRef.current?.swiper.isEnd
-      ? setNextBtnDisable(true)
-      : setNextBtnDisable(false);
+    if (swiperRef.current !== null) {
+      swiperRef.current?.swiper.isBeginning
+        ? setPrevBtnDisable(true)
+        : setPrevBtnDisable(false);
+      swiperRef.current?.swiper.isEnd
+        ? setNextBtnDisable(true)
+        : setNextBtnDisable(false);
+     }
   });
 
   useEffect(() => {
@@ -106,7 +107,7 @@ const RecipeList = () => {
 
   <ArrowBtnContainer className="swiper-nav-btns">
             <ArrowBtn onClick={prevSlide} disabled={prevBtnDisable}>
-               <FaLongArrowAltLeft width={50} />
+               <FaLongArrowAltLeft />
             </ArrowBtn>
             <ArrowBtn onClick={nextSlide} disabled={nextBtnDisable}>
               <FaLongArrowAltRight />
