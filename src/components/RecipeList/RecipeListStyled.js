@@ -27,3 +27,25 @@ border: 1px solid black;
     background-color: lightskyblue;
 }
 `;
+
+export const ArrowBtnContainer = styled.div`
+padding-top: 20px;
+display: flex;
+gap: 30px;
+justify-content:center;
+`
+
+export const ArrowBtn = styled.button`
+border:none;
+background-color: transparent;
+width: 80px;
+height: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius:4px;
+
+&:hover{
+    background-color: lightskyblue;
+}
+`
