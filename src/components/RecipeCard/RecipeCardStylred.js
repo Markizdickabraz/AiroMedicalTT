@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const RecipeCardStyled = styled.div`
+position: relative;
 /* width: 70%; */
 height: 100%;
 list-style:none;
@@ -31,6 +32,12 @@ align-items: center;
 `;
 
 export const HandBtn = styled.button`
+position: absolute;
+bottom: 5px;
+right: 5px;
+width: 40px;
+height: 40px;
 border: none;
-background-color:transparent;
+border-radius: 50%;
+background-color:whitesmoke;
 `

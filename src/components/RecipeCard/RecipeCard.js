@@ -19,8 +19,7 @@ export default function RecipeCard({ recipe, activeRecipe }) {
   }
 
   function handleClick(event) {
-    console.log(event.target.className)
-    if (event.button === 2 || event.target.className.baseVal === 'btnDelete' || event.target.className.baseVal === 'iconDelete') {
+    if (event.button === 2 || event.target.className === 'sc-iBIYEh ccgFrt btnDelete' || event.target.className.baseVal === 'iconDelete') {
       event.preventDefault();
       toggleClass();
     }
@@ -35,7 +34,7 @@ export default function RecipeCard({ recipe, activeRecipe }) {
       id={recipe.id}
     >
       <LinkStyled to={`/beer`} state={{ recipeItem }}>
-        {pageWidth <= 1024 && <HandBtn className="btnDelete" title="Click to select items for deletion" onClick={handleClick}><BsHandIndex className="iconDelete" /></HandBtn>}
+        {pageWidth <= 1023 && <HandBtn className="btnDelete" title="Click to select items for deletion" onClick={handleClick}><BsHandIndex className="iconDelete" /></HandBtn>}
           <h4>{recipe.name}</h4>
         <img
           style={{ padding: 5 }}

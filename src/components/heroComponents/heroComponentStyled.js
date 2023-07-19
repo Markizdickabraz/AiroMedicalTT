@@ -10,12 +10,13 @@ export const HeroContainer = styled.div`
     url(${beer});
   background-size: cover;
   background-repeat: no-repeat;
-  width: 100%;
+  width: 100%; 
   height: 100%;
   background-position: center;
 `
 
 export const HeroTitles = styled.h1`
+display: block;
 text-align:center;
 padding: 50px;
 font-size: 2em;

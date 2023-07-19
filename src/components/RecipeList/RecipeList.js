@@ -19,6 +19,11 @@ const RecipeList = () => {
   const [startItem, setStartItem] = useState(0);
   const [endItem, setEndItem] = useState(15);
 
+  useEffect(() => {
+    loadRecipes(page);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
+
  useEffect(() => {
    if (recipes !== null && recipes !== undefined) {
      setRecipesElements(recipes.slice(startItem, endItem));
