@@ -29,3 +29,8 @@ align-items: center;
     scale: 1.02;
 }
 `;
+
+export const HandBtn = styled.button`
+border: none;
+background-color:transparent;
+`

@@ -1,10 +1,12 @@
-import { LinkStyled, RecipeCardStyled } from "./RecipeCardStylred";
+import { HandBtn, LinkStyled, RecipeCardStyled } from "./RecipeCardStylred";
 import { useState, useEffect } from "react";
+import {BsHandIndex} from 'react-icons/bs'
 
 export default function RecipeCard({ recipe, activeRecipe }) {
   const [isActive, setIsActive] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [recipeItem, setRecipeItem] = useState([recipe]);
+  const pageWidth = document.documentElement.clientWidth;
 
   useEffect(() => {
     const activeRecipes = document.querySelectorAll(".active");
@@ -17,7 +19,8 @@ export default function RecipeCard({ recipe, activeRecipe }) {
   }
 
   function handleClick(event) {
-    if (event.button === 2) {
+    console.log(event.target.className)
+    if (event.button === 2 || event.target.className.baseVal === 'btnDelete' || event.target.className.baseVal === 'iconDelete') {
       event.preventDefault();
       toggleClass();
     }
@@ -32,6 +35,7 @@ export default function RecipeCard({ recipe, activeRecipe }) {
       id={recipe.id}
     >
       <LinkStyled to={`/beer`} state={{ recipeItem }}>
+        {pageWidth <= 1024 && <HandBtn className="btnDelete" title="Click to select items for deletion" onClick={handleClick}><BsHandIndex className="iconDelete" /></HandBtn>}
           <h4>{recipe.name}</h4>
         <img
           style={{ padding: 5 }}

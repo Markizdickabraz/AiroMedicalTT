@@ -2,7 +2,9 @@ import { Oval } from 'react-loader-spinner';
 
 export default function Loader() {
     return (
-        <Oval
+        
+    <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+           <Oval
     height={80}
     width={80}
     color="#4fa94d"
@@ -14,5 +16,6 @@ export default function Loader() {
     strokeWidth={2}
     strokeWidthSecondary={2}
   />
+     </div>
    )
 }

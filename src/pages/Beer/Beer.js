@@ -5,7 +5,6 @@ import { StyleImg } from "./BeerStyled";
 export default function Beer() {
     const location = useLocation();
     const recipeItem = location.state?.recipeItem;
-    console.log(recipeItem);
     
     return (
         <>

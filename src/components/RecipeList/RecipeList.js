@@ -15,23 +15,30 @@ const RecipeList = () => {
   const swiperRef = useRef(null);
   const [prevBtnDisable, setPrevBtnDisable] = useState(true);
   const [nextBtnDisable, setNextBtnDisable] = useState(false);
-  const [startItem, setStartItem] = useState(0);
-  const [endItem, setEndItem] = useState(15);
+
+  // const [startItem, setStartItem] = useState(0);
+  // const [endItem, setEndItem] = useState(15);
+
+
 
   const prevSlide = () => {
     if (!swiperRef.current?.swiper.isBeginning) {
       swiperRef.current?.swiper.slidePrev();
-      setStartItem(prevState => prevState - 5);
-      setEndItem(prevState => prevState - 5);
     }
+    // console.log(swiperRef.current?.swiper.realIndex)
+      // setStartItem((prevStart) => prevStart - 5);
+      // setEndItem((prevEnd) => prevEnd - 5);
   };
 
   const nextSlide = () => {
     if (!swiperRef.current?.swiper.isEnd) {
       swiperRef.current?.swiper.slideNext();
-      setStartItem(prevState => prevState + 5);
-      setEndItem(prevState => prevState + 5);
     }
+    // console.log(swiperRef.current?.swiper.realIndex)
+    // if(swiperRef.current?.swiper.realIndex === 10){
+      // setStartItem((prevStart) => prevStart + 5);
+      // setEndItem((prevEnd) => prevEnd + 5);
+    // }
   };
 
   swiperRef.current?.swiper.on("slideChange", () => {
@@ -70,9 +77,7 @@ const RecipeList = () => {
   };
   
   if (isLoading) {
-    return <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
-      <Loader />
-    </div>
+    return <Loader />
   }
   return (
     <>
@@ -83,6 +88,7 @@ const RecipeList = () => {
             spaceBetween={10}
             freeMode={true} 
             ref={swiperRef}
+            initialSlide={0}
             breakpoints={{
             320: {
               slidesPerView: 2,
@@ -94,7 +100,7 @@ const RecipeList = () => {
             },
           }}
           >
-      {recipes && recipes.slice(startItem, endItem).map((recipe) => (
+      {recipes && recipes.slice(0, 15).map((recipe) => (
       recipe && recipe.id ? (
       <SwiperSlide key={recipe.id}>
         <RecipeCard activeRecipe={activeRecipe} recipe={recipe} />
@@ -103,7 +109,7 @@ const RecipeList = () => {
   ))}
           </Swiper>
         </RecipeListGallery>}
-  <ArrowBtnContainer className="swiper-nav-btns">
+            <ArrowBtnContainer className="swiper-nav-btns">
             <ArrowBtn onClick={prevSlide} disabled={prevBtnDisable}>
                <FaLongArrowAltLeft />
             </ArrowBtn>

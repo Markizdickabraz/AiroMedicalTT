@@ -14,3 +14,4 @@ On the home screen, you'll see 5 cards displaying beer names and photos. You can
 Clicking the left mouse button on a card will take you to the beer recipe page. On this page, there's an arrow to return to the main screen.
 By clicking the right mouse button on a card, it will be highlighted, and a delete button will appear, allowing you to select multiple cards. New cards will appear in place of the deleted ones. This way, you can remove items that are not of interest.
 
+On the mobile version, a finger-pointing button appears.When pressed, the card is highlighted, and a delete button appears. On the mobile version, just like on desktop, you can select and delete multiple cards.
