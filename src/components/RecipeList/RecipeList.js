@@ -11,52 +11,25 @@ const RecipeList = () => {
   const { recipes, isLoading, loadRecipes, deleteRecipe } = useRecipeStore();
   const [page, setPage] = useState(1);
   const [activeElement, setActiveEelement] = useState([]);
-  const [recipesElements, setRecipesElement] = useState(null);
+  const [recipesElements, setRecipesElements] = useState([]);
   const swiperRef = useRef(null);
   const [prevBtnDisable, setPrevBtnDisable] = useState(true);
   const [nextBtnDisable, setNextBtnDisable] = useState(false);
 
-  // const [startItem, setStartItem] = useState(0);
-  // const [endItem, setEndItem] = useState(15);
+  const [startItem, setStartItem] = useState(0);
+  const [endItem, setEndItem] = useState(15);
 
-
-
-  const prevSlide = () => {
-    if (!swiperRef.current?.swiper.isBeginning) {
-      swiperRef.current?.swiper.slidePrev();
-    }
-    // console.log(swiperRef.current?.swiper.realIndex)
-      // setStartItem((prevStart) => prevStart - 5);
-      // setEndItem((prevEnd) => prevEnd - 5);
-  };
-
-  const nextSlide = () => {
-    if (!swiperRef.current?.swiper.isEnd) {
-      swiperRef.current?.swiper.slideNext();
-    }
-    // console.log(swiperRef.current?.swiper.realIndex)
-    // if(swiperRef.current?.swiper.realIndex === 10){
-      // setStartItem((prevStart) => prevStart + 5);
-      // setEndItem((prevEnd) => prevEnd + 5);
-    // }
-  };
-
-  swiperRef.current?.swiper.on("slideChange", () => {
-    if (swiperRef.current !== null) {
-      swiperRef.current?.swiper.isBeginning
-        ? setPrevBtnDisable(true)
-        : setPrevBtnDisable(false);
-      swiperRef.current?.swiper.isEnd
-        ? setNextBtnDisable(true)
-        : setNextBtnDisable(false);
+ useEffect(() => {
+   if (recipes !== null && recipes !== undefined) {
+     setRecipesElements(recipes.slice(startItem, endItem));
+     if (startItem === 0) {
+       setPrevBtnDisable(true);
      }
-  });
-
-  useEffect(() => {
-  loadRecipes(page)
-  setRecipesElement(recipes)
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[])
+     if (endItem === 25) { 
+       setNextBtnDisable(true)
+     }
+  }
+}, [page, loadRecipes, recipes, startItem, endItem]);
   
   useEffect(() => {
     if (recipes.length === 0 || recipes === null || recipes === undefined) {
@@ -67,6 +40,26 @@ const RecipeList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipes.length === 0, recipes === null]);
   
+  const prevSlide = () => {
+    setNextBtnDisable(false);
+  if (!swiperRef.current?.swiper.isBeginning) {
+    swiperRef.current?.swiper.slidePrev();
+  } else {
+    setStartItem(startItem => startItem -5);
+    setEndItem((prevEnd) => prevEnd - 5);
+  }
+};
+
+  const nextSlide = () => {
+    setPrevBtnDisable(false)
+    if (!swiperRef.current?.swiper.isEnd) {
+    swiperRef.current?.swiper.slideNext();
+  } else {
+    setStartItem(startItem => startItem + 5);
+    setEndItem((prevEnd) => prevEnd + 5);
+    }
+};
+
   const activeRecipe = (event) => {
     setActiveEelement(event);
   };
@@ -84,7 +77,6 @@ const RecipeList = () => {
       {recipesElements !== null &&
         <RecipeListGallery>
           <Swiper
-            slidesPerView={5}
             spaceBetween={10}
             freeMode={true} 
             ref={swiperRef}
@@ -92,28 +84,28 @@ const RecipeList = () => {
             breakpoints={{
             320: {
               slidesPerView: 2,
-              slidesPerGroup: 1,
+              slidesPerGroup: 2,
             },
             1024: {
               slidesPerView: 5,
-              slidesPerGroup: 1,
+              slidesPerGroup: 5,
             },
           }}
           >
-      {recipes && recipes.slice(0, 15).map((recipe) => (
+       {recipesElements.map((recipe) => (
       recipe && recipe.id ? (
-      <SwiperSlide key={recipe.id}>
-        <RecipeCard activeRecipe={activeRecipe} recipe={recipe} />
-      </SwiperSlide>
-    ) : null
-  ))}
-          </Swiper>
+        <SwiperSlide key={recipe.id}>
+           <RecipeCard activeRecipe={activeRecipe} recipe={recipe} />
+        </SwiperSlide>
+      ) : null
+    ))}
+         </Swiper>
         </RecipeListGallery>}
             <ArrowBtnContainer className="swiper-nav-btns">
-            <ArrowBtn onClick={prevSlide} disabled={prevBtnDisable}>
+            <ArrowBtn onClick={prevSlide} disabled={prevBtnDisable} >
                <FaLongArrowAltLeft />
             </ArrowBtn>
-            <ArrowBtn onClick={nextSlide} disabled={nextBtnDisable}>
+            <ArrowBtn onClick={nextSlide} disabled={nextBtnDisable} >
               <FaLongArrowAltRight />
             </ArrowBtn>
           </ArrowBtnContainer>
