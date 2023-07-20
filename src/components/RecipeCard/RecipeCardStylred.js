@@ -35,6 +35,10 @@ export const HandBtn = styled.button`
 position: absolute;
 bottom: 5px;
 right: 5px;
+display: flex;
+justify-content:center;
+align-items:center;
+padding: 0;
 width: 40px;
 height: 40px;
 border: none;

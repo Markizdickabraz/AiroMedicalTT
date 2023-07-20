@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const RecipeListGallery = styled.div`
-display: flex;
-justify-content:space-around;
-padding-top:20px;
-`;
-
 export const BtnContainer = styled.div`
 padding-top:25px;
 padding-bottom: 25px;

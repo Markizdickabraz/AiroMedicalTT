@@ -1,5 +1,5 @@
 import useRecipeStore from '../../zustand/RecipesStore';
-import { ArrowBtn, ArrowBtnContainer, BtnContainer, DeleteRecipeBtn, RecipeListGallery } from './RecipeListStyled';
+import { ArrowBtn, ArrowBtnContainer, BtnContainer, DeleteRecipeBtn } from './RecipeListStyled';
 import { useEffect, useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import RecipeCard from '../RecipeCard/RecipeCard';
@@ -80,8 +80,8 @@ const RecipeList = () => {
   return (
     <>
       {recipesElements !== null &&
-        <RecipeListGallery>
-          <Swiper
+        // <RecipeListGallery>
+          <Swiper style={{paddingTop: 20, display: 'flex', height: 250}}
             spaceBetween={10}
             freeMode={true} 
             ref={swiperRef}
@@ -104,8 +104,8 @@ const RecipeList = () => {
         </SwiperSlide>
       ) : null
     ))}
-         </Swiper>
-        </RecipeListGallery>}
+         </Swiper>}
+        
             <ArrowBtnContainer className="swiper-nav-btns">
             <ArrowBtn onClick={prevSlide} disabled={prevBtnDisable} >
                <FaLongArrowAltLeft />
