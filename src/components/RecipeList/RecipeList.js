@@ -80,7 +80,6 @@ const RecipeList = () => {
   return (
     <>
       {recipesElements !== null &&
-        // <RecipeListGallery>
           <Swiper style={{paddingTop: 20, display: 'flex', height: 250}}
             spaceBetween={10}
             freeMode={true} 
@@ -105,7 +104,6 @@ const RecipeList = () => {
       ) : null
     ))}
          </Swiper>}
-        
             <ArrowBtnContainer className="swiper-nav-btns">
             <ArrowBtn onClick={prevSlide} disabled={prevBtnDisable} >
                <FaLongArrowAltLeft />
